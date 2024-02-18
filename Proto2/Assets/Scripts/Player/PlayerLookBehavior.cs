@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class PlayerLookBehavior : MonoBehaviour
 {
-    [SerializeField] Transform playerBody;
+    public Transform orientation;
 
-    public float mouseSensitivity;
-    float xRotation = 0f;
+    public float sensX;
+    public float sensY;
+
+    float xRotation;
+    float yRotation;
 
     private void Start()
     {
@@ -16,14 +19,17 @@ public class PlayerLookBehavior : MonoBehaviour
 
     void Update()
     {
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+        float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX;
+        float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensY;
+
+        yRotation += mouseX;
 
         xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -180f, 20f);
+        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
-        transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-        playerBody.Rotate(Vector3.up * mouseX);
+        transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
+        orientation.rotation = Quaternion.Euler(0, yRotation, 0);
+
     }
 
 }
