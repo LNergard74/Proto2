@@ -312,7 +312,7 @@ MonoBehaviour:
   orientation: {fileID: 354240499}
   Cam: {fileID: 963194225}
   moveSpeed: 7
-  launchSpeed: 1.5
+  launchSpeed: 3
   playerHeight: 2
   whatIsGround:
     serializedVersion: 2
