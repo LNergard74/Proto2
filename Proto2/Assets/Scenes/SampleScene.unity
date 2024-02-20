@@ -681,8 +681,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orientation: {fileID: 354240499}
-  sensX: 400
-  sensY: 400
+  sensX: 50
+  sensY: 50
 --- !u!114 &963194230
 MonoBehaviour:
   m_ObjectHideFlags: 0

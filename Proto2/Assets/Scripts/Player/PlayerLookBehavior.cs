@@ -1,3 +1,10 @@
+/*****************************************************************************
+// File Name :         PlayerLookBehavior.cs
+// Author :            Lorien Nergard
+// Creation Date :     February 16th, 2024
+//
+// Brief Description : Controls the camera and cursor lock of the player
+*****************************************************************************/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

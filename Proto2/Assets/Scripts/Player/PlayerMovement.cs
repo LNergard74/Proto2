@@ -1,3 +1,10 @@
+/*****************************************************************************
+// File Name :         PlayerMovement.cs
+// Author :            Lorien Nergard
+// Creation Date :     February 16th, 2024
+//
+// Brief Description : Controls the movement of the player
+*****************************************************************************/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,7 +27,9 @@ public class PlayerMovement : MonoBehaviour
     public float groundDrag;
    
 
-    // Start is called before the first frame update
+    /// <summary>
+    /// Start function
+    /// </summary>
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -29,7 +38,9 @@ public class PlayerMovement : MonoBehaviour
         playerInput = new PlayerInput();
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// Detects the ground to apply drag and runs the AxisInput function 
+    /// </summary>
     void Update()
     {
         AxisInput();
@@ -46,23 +57,35 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Calls the run function for the player to move
+    /// </summary>
     private void FixedUpdate()
     {
         Run();
     }
 
+    /// <summary>
+    /// Allows the player to move in the direction that they are facing
+    /// </summary>
     void Run()
     {
         moveDirection = orientation.forward * verticaleInput + orientation.right * horizontalInput;
         rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
     }
 
+    /// <summary>
+    /// Gets the axis' for movement 
+    /// </summary>
     private void AxisInput()
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticaleInput = Input.GetAxisRaw("Vertical");
     }
 
+    /// <summary>
+    /// Prevents the player from exceeding the set speed
+    /// </summary>
     private void SpeedControl()
     {
         Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
@@ -74,9 +97,20 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// The shoot action propels the player into the air 
+    /// </summary>
+    /// <param name="context"></param>
     private void Shoot(InputAction.CallbackContext context)
     {
         Debug.Log("Shoot");
+        // Use add force except make moveDirection aim behind the player rather than forward 
+        //Make a gameobject for it and have the game object be turned around so it goes in that directiom
+        //Use a seperate variable for the shoot speed to better control it and not let it get too crazy
+        /*
+        moveDirection = orientation.forward * verticaleInput + orientation.right * horizontalInput;
+        rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+        */
     }
 
     private void OnEnable()
