@@ -12,14 +12,19 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private PlayerInput playerInput;
+    private PlayerControls playerInput;
 
     public Transform orientation;
     float horizontalInput;
     float verticaleInput;
-    Vector3 moveDirection;
-    Rigidbody rb;
+
+    private Vector3 moveDirection;
+
+    [SerializeField] GameObject Cam;
+
+    private Rigidbody rb;
     public float moveSpeed;
+    public float launchSpeed;
 
     public float playerHeight;
     public LayerMask whatIsGround;
@@ -35,7 +40,6 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
-        playerInput = new PlayerInput();
     }
 
     /// <summary>
@@ -83,6 +87,7 @@ public class PlayerMovement : MonoBehaviour
         verticaleInput = Input.GetAxisRaw("Vertical");
     }
 
+    
     /// <summary>
     /// Prevents the player from exceeding the set speed
     /// </summary>
@@ -90,38 +95,50 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
-        if(flatVel.magnitude > moveSpeed)   //When making the gun adjust this to account for faster movement in the air
+        if(flatVel.magnitude > moveSpeed)   
         {
             Vector3 limitedVel = flatVel.normalized * moveSpeed;
             rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
         }
+
     }
+    
 
     /// <summary>
-    /// The shoot action propels the player into the air 
+    /// The shoot action propels the player
     /// </summary>
     /// <param name="context"></param>
     private void Shoot(InputAction.CallbackContext context)
-    {
-        Debug.Log("Shoot");
-        // Use add force except make moveDirection aim behind the player rather than forward 
-        //Make a gameobject for it and have the game object be turned around so it goes in that directiom
-        //Use a seperate variable for the shoot speed to better control it and not let it get too crazy
-        /*
-        moveDirection = orientation.forward * verticaleInput + orientation.right * horizontalInput;
-        rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
-        */
+    {        
+        Vector3 lauchDirection = orientation.transform.rotation.eulerAngles;
+        lauchDirection.x = (lauchDirection.x + 180) % 360;
+        lauchDirection.y = (lauchDirection.y + 180) % 360;
+        //launchDirection = launchOrientation.forward * verticaleInput + launchOrientation.right * horizontalInput;
+        rb.AddForce(Cam.transform.forward * -1 * launchSpeed * 10f, ForceMode.Impulse);
+
+
+        Vector3 launchFlatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+
+        if (launchFlatVel.magnitude > launchSpeed)
+        {
+            Vector3 limitedLaunchVel = launchFlatVel.normalized * moveSpeed;
+            rb.velocity = new Vector3(limitedLaunchVel.x, rb.velocity.y, limitedLaunchVel.z);
+        }
     }
+
 
     private void OnEnable()
     {
-        playerInput.Player.Enable();
+        playerInput = new PlayerControls(); 
+
+        playerInput.Enable();
         playerInput.Player.Shoot.performed += Shoot; 
     }
 
     private void OnDisable()
     {
-        playerInput.Player.Disable();
-        playerInput.Player.Shoot.performed -= Shoot;
+      playerInput.Disable();
+      playerInput.Player.Shoot.performed -= Shoot;
     }
+    
 }
