@@ -167,7 +167,7 @@ GameObject:
   - component: {fileID: 453855219}
   - component: {fileID: 453855218}
   m_Layer: 3
-  m_Name: Plane
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -319,7 +319,6 @@ MonoBehaviour:
     m_Bits: 8
   groundDrag: 5
   currentReloadShots: 0
-  maxReloadShots: 3
   reloadTime: 0
 --- !u!54 &460832786
 Rigidbody:
