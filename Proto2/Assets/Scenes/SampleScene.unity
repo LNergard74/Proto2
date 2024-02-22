@@ -318,6 +318,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   groundDrag: 5
+  currentReloadShots: 4
+  maxReloadShots: 4
+  reloadTime: 4
 --- !u!54 &460832786
 Rigidbody:
   m_ObjectHideFlags: 0
