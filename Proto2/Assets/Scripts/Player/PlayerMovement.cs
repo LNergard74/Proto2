@@ -7,6 +7,7 @@
 *****************************************************************************/
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -35,7 +36,8 @@ public class PlayerMovement : MonoBehaviour
     public float maxReloadShots;
     public float reloadTime;
     private float reloadCounter;
-   
+
+    [SerializeField] TMP_Text reloadText;
 
     /// <summary>
     /// Start function
@@ -44,7 +46,8 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
-
+        currentReloadShots = maxReloadShots;
+        reloadText.SetText(maxReloadShots.ToString());
     }
 
     /// <summary>
@@ -73,12 +76,14 @@ public class PlayerMovement : MonoBehaviour
             {
                 currentReloadShots++;
                 reloadCounter = 0;
+                reloadText.SetText(currentReloadShots.ToString());
             }
         }
 
         if(grounded && currentReloadShots == 0)
         {
             currentReloadShots = 1;
+            reloadText.SetText(currentReloadShots.ToString());
         }
     }
 
@@ -150,8 +155,9 @@ public class PlayerMovement : MonoBehaviour
             }
 
             currentReloadShots--;
+            reloadText.SetText(currentReloadShots.ToString());
         }
-        
+
     }
 
 
