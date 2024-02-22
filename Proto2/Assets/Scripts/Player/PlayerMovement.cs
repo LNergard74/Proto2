@@ -30,6 +30,11 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask whatIsGround;
     bool grounded;
     public float groundDrag;
+
+    public float currentReloadShots;
+    public float maxReloadShots;
+    public float reloadTime;
+    private float reloadCounter;
    
 
     /// <summary>
@@ -58,6 +63,22 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             rb.drag = 0;
+        }
+
+        if(currentReloadShots < maxReloadShots)
+        {
+            reloadCounter += Time.deltaTime;
+
+            if(reloadCounter >= reloadTime)
+            {
+                currentReloadShots++;
+                reloadCounter = 0;
+            }
+        }
+
+        if(grounded && currentReloadShots == 0)
+        {
+            currentReloadShots = 1;
         }
     }
 
@@ -110,21 +131,27 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     /// <param name="context"></param>
     private void Shoot(InputAction.CallbackContext context)
-    {        
-        Vector3 lauchDirection = orientation.transform.rotation.eulerAngles;
-        lauchDirection.x = (lauchDirection.x + 180) % 360;
-        lauchDirection.y = (lauchDirection.y + 180) % 360;
-        //launchDirection = launchOrientation.forward * verticaleInput + launchOrientation.right * horizontalInput;
-        rb.AddForce(Cam.transform.forward * -1 * launchSpeed * 10f, ForceMode.Impulse);
-
-
-        Vector3 launchFlatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-
-        if (launchFlatVel.magnitude > launchSpeed)
+    {  
+        if(currentReloadShots > 0)
         {
-            Vector3 limitedLaunchVel = launchFlatVel.normalized * moveSpeed;
-            rb.velocity = new Vector3(limitedLaunchVel.x, rb.velocity.y, limitedLaunchVel.z);
+            Vector3 lauchDirection = orientation.transform.rotation.eulerAngles;
+            lauchDirection.x = (lauchDirection.x + 180) % 360;
+            lauchDirection.y = (lauchDirection.y + 180) % 360;
+            //launchDirection = launchOrientation.forward * verticaleInput + launchOrientation.right * horizontalInput;
+            rb.AddForce(Cam.transform.forward * -1 * launchSpeed * 10f, ForceMode.Impulse);
+
+
+            Vector3 launchFlatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+
+            if (launchFlatVel.magnitude > launchSpeed)
+            {
+                Vector3 limitedLaunchVel = launchFlatVel.normalized * moveSpeed;
+                rb.velocity = new Vector3(limitedLaunchVel.x, rb.velocity.y, limitedLaunchVel.z);
+            }
+
+            currentReloadShots--;
         }
+        
     }
 
 
