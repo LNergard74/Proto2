@@ -319,7 +319,6 @@ MonoBehaviour:
     m_Bits: 8
   groundDrag: 5
   currentReloadShots: 0
-  maxReloadShots: 0
   reloadTime: 0
 --- !u!54 &460832786
 Rigidbody:
