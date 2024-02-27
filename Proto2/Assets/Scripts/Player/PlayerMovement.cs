@@ -65,6 +65,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (grounded)
         {
+            Debug.Log("Goober");
             rb.drag = groundDrag;
         }
         else
