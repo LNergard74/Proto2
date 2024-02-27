@@ -840,7 +840,8 @@ MonoBehaviour:
   currentReloadShots: 0
   maxReloadShots: 3
   reloadTime: 8
-  reloadText: {fileID: 0}
+  ReloadUI: {fileID: 1767498911}
+  reloadText: {fileID: 891562942}
 --- !u!54 &1384793528
 Rigidbody:
   m_ObjectHideFlags: 0
