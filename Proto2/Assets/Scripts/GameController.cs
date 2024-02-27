@@ -42,6 +42,10 @@ public class GameController : MonoBehaviour
         isPaused = !isPaused;
         pauseMenu.SetActive(false);
         Time.timeScale = 1.0f;
+
+        Cursor.visible = true;
+
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void Pause()
@@ -51,6 +55,9 @@ public class GameController : MonoBehaviour
         {
             Time.timeScale = 0f;
             pauseMenu.SetActive(true);
+            Cursor.visible = true;
+
+            Cursor.lockState = CursorLockMode.None;
         }
         else
         {

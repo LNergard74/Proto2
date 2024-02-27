@@ -7,5 +7,8 @@ public class CursorOn : MonoBehaviour
     void Start()
     {
         Cursor.visible = true;
+
+        Cursor.lockState = CursorLockMode.None;
+
     }
 }
