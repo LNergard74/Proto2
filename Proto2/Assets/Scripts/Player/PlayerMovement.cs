@@ -40,8 +40,11 @@ public class PlayerMovement : MonoBehaviour
     private float reloadCounter;
 
     [SerializeField] public Image ReloadUI;
-
     [SerializeField] TMP_Text reloadText;
+
+    public GameObject gameController;
+
+
 
     /// <summary>
     /// Start function
@@ -181,5 +184,11 @@ public class PlayerMovement : MonoBehaviour
       playerInput.Disable();
       playerInput.Player.Shoot.performed -= Shoot;
     }
-    
+
+    private void Pause(InputAction.CallbackContext context)
+    {
+        gameController.GetComponent<GameController>().Pause();
+        Debug.Log("gamer");
+    }
+
 }
