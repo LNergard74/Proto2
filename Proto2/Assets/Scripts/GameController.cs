@@ -27,6 +27,11 @@ public class GameController : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
+    public void Win()
+    {
+        SceneManager.LoadScene("WinScreen");
+    }
+
     public void CreditsToggle()
     {
         creditsToggle = !creditsToggle;
