@@ -10,6 +10,8 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
+
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -36,6 +38,8 @@ public class PlayerMovement : MonoBehaviour
     public float maxReloadShots;
     public float reloadTime;
     private float reloadCounter;
+
+    [SerializeField] public Image ReloadUI;
 
     [SerializeField] TMP_Text reloadText;
 
@@ -85,6 +89,8 @@ public class PlayerMovement : MonoBehaviour
             currentReloadShots = 1;
             reloadText.SetText(currentReloadShots.ToString());
         }
+
+        ReloadUI.fillAmount = reloadCounter / reloadTime;
     }
 
     /// <summary>
