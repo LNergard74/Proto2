@@ -733,13 +733,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Main Menu
   m_isRightToLeft: 0
-<<<<<<< Updated upstream
   m_fontAsset: {fileID: 11400000, guid: cee1808f7cf52f545b6fce0ced15fd77, type: 2}
   m_sharedMaterial: {fileID: 1437951021872713694, guid: cee1808f7cf52f545b6fce0ced15fd77, type: 2}
-=======
-  m_fontAsset: {fileID: 11400000, guid: 4adab97d816eccf4fb3b244c1c079ecc, type: 2}
-  m_sharedMaterial: {fileID: -1859280538387961052, guid: 4adab97d816eccf4fb3b244c1c079ecc, type: 2}
->>>>>>> Stashed changes
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -872,13 +867,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: You Fell!
   m_isRightToLeft: 0
-<<<<<<< Updated upstream
   m_fontAsset: {fileID: 11400000, guid: cee1808f7cf52f545b6fce0ced15fd77, type: 2}
   m_sharedMaterial: {fileID: 1437951021872713694, guid: cee1808f7cf52f545b6fce0ced15fd77, type: 2}
-=======
-  m_fontAsset: {fileID: 11400000, guid: 4adab97d816eccf4fb3b244c1c079ecc, type: 2}
-  m_sharedMaterial: {fileID: -1859280538387961052, guid: 4adab97d816eccf4fb3b244c1c079ecc, type: 2}
->>>>>>> Stashed changes
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
