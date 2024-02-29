@@ -95,6 +95,15 @@ public class PlayerMovement : MonoBehaviour
         }
 
         ReloadUI.fillAmount = reloadCounter / reloadTime;
+
+        if (gameController.GetComponent<GameController>().isPaused)
+        {
+            playerInput.Player.Shoot.performed -= Shoot;
+        }
+        else
+        {
+            playerInput.Player.Shoot.performed += Shoot;
+        }
     }
 
     /// <summary>
@@ -176,13 +185,15 @@ public class PlayerMovement : MonoBehaviour
         playerInput = new PlayerControls(); 
 
         playerInput.Enable();
-        playerInput.Player.Shoot.performed += Shoot; 
+        playerInput.Player.Shoot.performed += Shoot;
+        playerInput.Player.Pause.performed += Pause;
     }
 
     private void OnDisable()
     {
       playerInput.Disable();
       playerInput.Player.Shoot.performed -= Shoot;
+      playerInput.Player.Pause.performed -= Pause;
     }
 
     private void Pause(InputAction.CallbackContext context)
