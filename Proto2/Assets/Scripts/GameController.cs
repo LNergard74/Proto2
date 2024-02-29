@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
@@ -46,6 +47,7 @@ public class GameController : MonoBehaviour
         Cursor.visible = true;
 
         Cursor.lockState = CursorLockMode.Locked;
+
     }
 
     public void Pause()
@@ -63,6 +65,9 @@ public class GameController : MonoBehaviour
         {
             Time.timeScale = 1f;
             pauseMenu.SetActive(false);
+            Cursor.visible = true;
+
+            Cursor.lockState = CursorLockMode.Locked;
         }
     }
 }
