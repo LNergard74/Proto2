@@ -840,7 +840,10 @@ MonoBehaviour:
   currentReloadShots: 0
   maxReloadShots: 3
   reloadTime: 8
+<<<<<<< Updated upstream
   ReloadUI: {fileID: 1767498911}
+=======
+>>>>>>> Stashed changes
   reloadText: {fileID: 891562942}
 --- !u!54 &1384793528
 Rigidbody:

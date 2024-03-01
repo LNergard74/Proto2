@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     float verticaleInput;
 
     private Vector3 moveDirection;
+    private Vector3 respawnPos;
 
     [SerializeField] GameObject Cam;
 
@@ -39,8 +40,12 @@ public class PlayerMovement : MonoBehaviour
     public float reloadTime;
     private float reloadCounter;
 
+<<<<<<< Updated upstream
     [SerializeField] public Image ReloadUI;
     [SerializeField] TMP_Text reloadText;
+=======
+    [SerializeField] TMP_Text reloadText, checkpointText;
+>>>>>>> Stashed changes
 
     public GameObject gameController;
 
@@ -55,6 +60,8 @@ public class PlayerMovement : MonoBehaviour
         rb.freezeRotation = true;
         currentReloadShots = maxReloadShots;
         reloadText.SetText(maxReloadShots.ToString());
+
+        respawnPos = transform.position;
     }
 
     /// <summary>
@@ -94,6 +101,7 @@ public class PlayerMovement : MonoBehaviour
             reloadText.SetText(currentReloadShots.ToString());
         }
 
+<<<<<<< Updated upstream
         ReloadUI.fillAmount = reloadCounter / reloadTime;
 
         if (gameController.GetComponent<GameController>().isPaused)
@@ -104,6 +112,8 @@ public class PlayerMovement : MonoBehaviour
         {
             playerInput.Player.Shoot.performed += Shoot;
         }
+=======
+>>>>>>> Stashed changes
     }
 
     /// <summary>
@@ -179,6 +189,25 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    public void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject.name == "Respawn Zone")
+        {
+            transform.position = respawnPos;
+        }
+        if (collision.gameObject.name == "Checkpoint 1")
+        {
+            respawnPos = new Vector3(3.53999996f, 13.9300003f, 104.769997f);
+            checkpointText.enabled = true;
+            StartCoroutine(DisplayCheckpointText());
+        }
+    }
+
+    IEnumerator DisplayCheckpointText()
+    {
+        yield return new WaitForSeconds(2);
+        checkpointText.enabled = false;
+    }
 
     private void OnEnable()
     {
