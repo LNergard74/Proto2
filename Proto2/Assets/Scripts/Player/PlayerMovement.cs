@@ -40,12 +40,8 @@ public class PlayerMovement : MonoBehaviour
     public float reloadTime;
     private float reloadCounter;
 
-<<<<<<< Updated upstream
     [SerializeField] public Image ReloadUI;
-    [SerializeField] TMP_Text reloadText;
-=======
     [SerializeField] TMP_Text reloadText, checkpointText;
->>>>>>> Stashed changes
 
     public GameObject gameController;
 
@@ -100,8 +96,6 @@ public class PlayerMovement : MonoBehaviour
             currentReloadShots = 1;
             reloadText.SetText(currentReloadShots.ToString());
         }
-
-<<<<<<< Updated upstream
         ReloadUI.fillAmount = reloadCounter / reloadTime;
 
         if (gameController.GetComponent<GameController>().isPaused)
@@ -112,8 +106,6 @@ public class PlayerMovement : MonoBehaviour
         {
             playerInput.Player.Shoot.performed += Shoot;
         }
-=======
->>>>>>> Stashed changes
     }
 
     /// <summary>
