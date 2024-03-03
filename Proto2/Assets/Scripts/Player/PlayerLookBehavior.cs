@@ -16,8 +16,8 @@ public class PlayerLookBehavior : MonoBehaviour
     public float sensX;
     public float sensY;
 
-    float xRotation;
-    float yRotation;
+    public float xRotation;
+    public float yRotation;
 
     void Start()
     {
@@ -37,7 +37,6 @@ public class PlayerLookBehavior : MonoBehaviour
 
         transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
         orientation.rotation = Quaternion.Euler(0, yRotation, 0);
-
     }
 
 }

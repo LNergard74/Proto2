@@ -16,6 +16,7 @@ using UnityEngine.UI;
 public class PlayerMovement : MonoBehaviour
 {
     private PlayerControls playerInput;
+    public PlayerLookBehavior playerLookBehavior;
 
     public Transform orientation;
     float horizontalInput;
@@ -39,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
     public float maxReloadShots;
     public float reloadTime;
     private float reloadCounter;
+    public float xRespawnRotation = -8, yRespawnRotation = -360;
 
     [SerializeField] public Image ReloadUI;
     [SerializeField] TMP_Text reloadText, checkpointText;
@@ -99,14 +101,14 @@ public class PlayerMovement : MonoBehaviour
 
         ReloadUI.fillAmount = reloadCounter / reloadTime;
 
-        if (gameController.GetComponent<GameController>().isPaused)
+        /*if (gameController.GetComponent<GameController>().isPaused)
         {
             playerInput.Player.Shoot.performed -= Shoot;
         }
         else
         {
             playerInput.Player.Shoot.performed += Shoot;
-        }
+        }*/
     }
 
     /// <summary>
@@ -187,6 +189,8 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.name == "Respawn Zone")
         {
             transform.position = respawnPos;
+            playerLookBehavior.xRotation = xRespawnRotation;
+            playerLookBehavior.yRotation = yRespawnRotation;
         }
         if (collision.gameObject.name == "Checkpoint 1")
         {
@@ -198,6 +202,8 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.name == "Checkpoint 2")
         {
             respawnPos = new Vector3(173, 5.69999981f, 138.199997f);
+            xRespawnRotation = -5;
+            yRespawnRotation = 90;
             checkpointText.enabled = true;
             StartCoroutine(DisplayCheckpointText());
             Destroy(GameObject.Find("Checkpoint 2"));
