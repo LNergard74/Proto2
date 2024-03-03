@@ -1757,6 +1757,8 @@ MonoBehaviour:
   orientation: {fileID: 1692452560}
   sensX: 400
   sensY: 400
+  xRotation: 0
+  yRotation: 0
 --- !u!114 &513096894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4909,10 +4911,11 @@ Transform:
   m_GameObject: {fileID: 1216990382}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.15, z: 2}
+  m_LocalPosition: {x: -2.86, y: -0.15, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2087718379}
   - {fileID: 402884473}
   - {fileID: 1692452560}
   - {fileID: 1849644646}
@@ -4960,6 +4963,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7bac583ff8770445918f120e7652b41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerLookBehavior: {fileID: 513096893}
   orientation: {fileID: 1692452560}
   Cam: {fileID: 513096891}
   moveSpeed: 7
@@ -4972,6 +4976,8 @@ MonoBehaviour:
   currentReloadShots: 0
   maxReloadShots: 2
   reloadTime: 1.5
+  xRespawnRotation: -8
+  yRespawnRotation: -360
   ReloadUI: {fileID: 1132708285}
   reloadText: {fileID: 1203746421}
   checkpointText: {fileID: 270260732}
@@ -6765,13 +6771,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2087718378}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -0.55999994}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.16999999, z: -2.56}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 513096892}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1216990383}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2096238813
 GameObject:
@@ -7749,7 +7755,6 @@ SceneRoots:
   - {fileID: 1749254757}
   - {fileID: 315463190}
   - {fileID: 585139050}
-  - {fileID: 2087718379}
   - {fileID: 1216990383}
   - {fileID: 1395084816}
   - {fileID: 459666361}
