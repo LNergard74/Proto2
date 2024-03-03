@@ -96,6 +96,7 @@ public class PlayerMovement : MonoBehaviour
             currentReloadShots = 1;
             reloadText.SetText(currentReloadShots.ToString());
         }
+
         ReloadUI.fillAmount = reloadCounter / reloadTime;
 
         if (gameController.GetComponent<GameController>().isPaused)
@@ -192,6 +193,14 @@ public class PlayerMovement : MonoBehaviour
             respawnPos = new Vector3(3.53999996f, 13.9300003f, 104.769997f);
             checkpointText.enabled = true;
             StartCoroutine(DisplayCheckpointText());
+            Destroy(GameObject.Find("Checkpoint 1"));
+        }
+        if (collision.gameObject.name == "Checkpoint 2")
+        {
+            respawnPos = new Vector3(173, 5.69999981f, 138.199997f);
+            checkpointText.enabled = true;
+            StartCoroutine(DisplayCheckpointText());
+            Destroy(GameObject.Find("Checkpoint 2"));
         }
     }
 
