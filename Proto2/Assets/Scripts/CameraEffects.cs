@@ -26,7 +26,7 @@ public class CameraEffects : MonoBehaviour
         m_FieldOfView = Mathf.Lerp(60, 100, parameter);
         Camera.main.fieldOfView = m_FieldOfView;
 
-        if (player_speed >= 20)
+        if (player_speed >= 15)
         {
             Speedlines.Play();
         }
