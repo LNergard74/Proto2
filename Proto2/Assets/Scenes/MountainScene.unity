@@ -3964,6 +3964,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7bac583ff8770445918f120e7652b41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerLookBehavior: {fileID: 0}
   orientation: {fileID: 1988202731}
   Cam: {fileID: 1940207304}
   moveSpeed: 7
@@ -3976,8 +3977,11 @@ MonoBehaviour:
   currentReloadShots: 4
   maxReloadShots: 4
   reloadTime: 4
+  xRespawnRotation: -8
+  yRespawnRotation: -360
   ReloadUI: {fileID: 1680417451}
   reloadText: {fileID: 1952287321}
+  checkpointText: {fileID: 0}
   gameController: {fileID: 678302679}
 --- !u!54 &743546174
 Rigidbody:
@@ -6811,6 +6815,89 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1636506865
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1636506868}
+  - component: {fileID: 1636506867}
+  m_Layer: 0
+  m_Name: UICamera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!20 &1636506867
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1636506865}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 3
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_Iso: 200
+  m_ShutterSpeed: 0.005
+  m_Aperture: 16
+  m_FocusDistance: 10
+  m_FocalLength: 50
+  m_BladeCount: 5
+  m_Curvature: {x: 2, y: 11}
+  m_BarrelClipping: 0.25
+  m_Anamorphism: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 32
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!4 &1636506868
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1636506865}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 320.86118, y: 358.54654, z: 0.50740266}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1637139641
 GameObject:
   m_ObjectHideFlags: 0
@@ -7994,8 +8081,8 @@ Canvas:
   m_GameObject: {fileID: 1762384992}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 1636506867}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -8025,6 +8112,7 @@ RectTransform:
   - {fileID: 1952287320}
   - {fileID: 1680417450}
   - {fileID: 687597359}
+  - {fileID: 1971988448}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -9053,6 +9141,7 @@ GameObject:
   - component: {fileID: 1940207307}
   - component: {fileID: 1940207306}
   - component: {fileID: 1940207305}
+  - component: {fileID: 1940207310}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -9075,6 +9164,8 @@ MonoBehaviour:
   orientation: {fileID: 1988202731}
   sensX: 350
   sensY: 350
+  xRotation: 0
+  yRotation: 0
 --- !u!114 &1940207306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9162,6 +9253,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 214961210}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1940207310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1940207304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe9ba586c1f1ac94a80cf38a308f36e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minSpeed: 0
+  maxSpeed: 40
+  player_speed: 0
+  Speedlines: {fileID: 1971988447}
 --- !u!1 &1952287319
 GameObject:
   m_ObjectHideFlags: 0
@@ -9307,7 +9414,7 @@ GameObject:
   - component: {fileID: 1971988448}
   - component: {fileID: 1971988447}
   - component: {fileID: 1971988446}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9363,7 +9470,7 @@ ParticleSystemRenderer:
   m_MaxParticleSize: 0.5
   m_CameraVelocityScale: 0
   m_VelocityScale: 0
-  m_LengthScale: 11
+  m_LengthScale: 9
   m_SortingFudge: 0
   m_NormalDirection: 1
   m_ShadowBias: 0
@@ -9396,7 +9503,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1971988445}
   serializedVersion: 8
-  lengthInSec: 5
+  lengthInSec: 1
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -9471,7 +9578,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 0.2
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -9524,7 +9631,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 25
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -9576,8 +9683,8 @@ ParticleSystem:
         m_RotationOrder: 4
     startColor:
       serializedVersion: 2
-      minMaxState: 0
-      minColor: {r: 1, g: 1, b: 1, a: 1}
+      minMaxState: 2
+      minColor: {r: 0.7584905, g: 0.7584905, b: 0.7584905, a: 1}
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
@@ -10019,7 +10126,7 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 6
     enabled: 1
-    type: 0
+    type: 10
     angle: 25
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
@@ -10106,7 +10213,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 11
+      value: 13
       mode: 0
       spread: 0
       speed:
@@ -10655,7 +10762,7 @@ ParticleSystem:
         m_RotationOrder: 4
     separateAxes: 0
   ColorModule:
-    enabled: 0
+    enabled: 1
     gradient:
       serializedVersion: 2
       minMaxState: 1
@@ -10664,7 +10771,7 @@ ParticleSystem:
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
-        key1: {r: 1, g: 1, b: 1, a: 1}
+        key1: {r: 1, g: 1, b: 1, a: 0}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -10688,7 +10795,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-        m_ColorSpace: -1
+        m_ColorSpace: 0
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
@@ -14119,12 +14226,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1971988445}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 133.24814, y: 184.32465, z: -143.82483}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -130.69044}
+  m_LocalScale: {x: 6, y: 6, z: 0.9086779}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1762384996}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1988202730
 GameObject:
@@ -14801,4 +14908,4 @@ SceneRoots:
   - {fileID: 678302682}
   - {fileID: 1762384996}
   - {fileID: 75991593}
-  - {fileID: 1971988448}
+  - {fileID: 1636506868}
