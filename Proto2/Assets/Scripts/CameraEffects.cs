@@ -8,10 +8,13 @@ public class CameraEffects : MonoBehaviour
     public float maxSpeed = 40f;
     public float player_speed;
     float m_FieldOfView;
+    public ParticleSystem Speedlines;
 
     void Start()
     {
         m_FieldOfView = 60.0f;
+
+        //Speedlines = gameObject.GetComponent<ParticleSystem>();
     }
 
     void Update()
@@ -23,5 +26,13 @@ public class CameraEffects : MonoBehaviour
         m_FieldOfView = Mathf.Lerp(60, 100, parameter);
         Camera.main.fieldOfView = m_FieldOfView;
 
+        if (player_speed >= 15)
+        {
+            Speedlines.Play();
+        }
+        else
+        {
+            Speedlines.Stop();
+        }
     }
 }
