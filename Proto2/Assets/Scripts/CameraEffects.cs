@@ -23,10 +23,11 @@ public class CameraEffects : MonoBehaviour
 
         float parameter = Mathf.InverseLerp(minSpeed, maxSpeed, player_speed);
 
-        m_FieldOfView = Mathf.Lerp(60, 100, parameter);
+        m_FieldOfView = Mathf.Lerp(60, 80, parameter);
+
         Camera.main.fieldOfView = m_FieldOfView;
 
-        if (player_speed >= 15)
+        if (player_speed >= 16)
         {
             Speedlines.Play();
         }
