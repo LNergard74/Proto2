@@ -49,6 +49,8 @@ public class PlayerMovement : MonoBehaviour
     public GameObject gameController;
 
 
+    public AudioSource audioSource;
+    public AudioClip shotSound;
 
     /// <summary>
     /// Start function
@@ -61,6 +63,8 @@ public class PlayerMovement : MonoBehaviour
         reloadText.SetText(maxReloadShots.ToString());
 
         respawnPos = transform.position;
+
+        audioSource = gameObject.GetComponent<AudioSource>();
     }
 
     /// <summary>
@@ -172,6 +176,8 @@ public class PlayerMovement : MonoBehaviour
 
 
             Vector3 launchFlatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+
+            audioSource.PlayOneShot(shotSound);
 
             if (launchFlatVel.magnitude > launchSpeed)
             {
