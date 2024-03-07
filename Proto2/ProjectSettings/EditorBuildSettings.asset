@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 56138afc614a9914ea323b57417da637
   - enabled: 1
+    path: Assets/Scenes/GabeScene.unity
+    guid: 356933dbff0c7304aa4c4cbe9367a1fd
+  - enabled: 1
     path: Assets/Scenes/WinScreen.unity
     guid: 7ae3748579fe5a744ab0c1d72e4fc2d6
   - enabled: 1
