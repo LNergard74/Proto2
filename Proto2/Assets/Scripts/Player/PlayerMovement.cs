@@ -42,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
     public float reloadTime;
     private float reloadCounter;
     public float xRespawnRotation = -8, yRespawnRotation = -360;
+    public int nextLevel;
 
     [SerializeField] public Image ReloadUI;
     [SerializeField] TMP_Text reloadText, checkpointText;
@@ -201,7 +202,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (collision.gameObject.name == "Finish Line")
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(nextLevel);
         }
         if (collision.gameObject.name == "Finish Line 2")
         {
