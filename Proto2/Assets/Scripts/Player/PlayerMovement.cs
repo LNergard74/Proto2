@@ -204,6 +204,10 @@ public class PlayerMovement : MonoBehaviour
         {
             SceneManager.LoadScene(nextLevel);
         }
+        if (collision.gameObject.name == "Finish Line 2")
+        {
+            SceneManager.LoadScene(2);
+        }
         if (collision.gameObject.name == "Checkpoint 1")
         {
             respawnPos = new Vector3(3.53999996f, 13.9300003f, 104.769997f);
