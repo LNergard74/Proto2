@@ -976,7 +976,7 @@ GameObject:
   - component: {fileID: 121911000}
   - component: {fileID: 121910999}
   m_Layer: 0
-  m_Name: Finish Line 2
+  m_Name: L2 Finish Line
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6544,6 +6544,7 @@ MonoBehaviour:
   reloadTime: 1.75
   xRespawnRotation: -8
   yRespawnRotation: -360
+  nextLevel: 0
   ReloadUI: {fileID: 411165278}
   reloadText: {fileID: 79628778}
   checkpointText: {fileID: 0}
