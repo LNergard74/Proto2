@@ -200,13 +200,13 @@ public class PlayerMovement : MonoBehaviour
             playerLookBehavior.xRotation = xRespawnRotation;
             playerLookBehavior.yRotation = yRespawnRotation;
         }
-        if (collision.gameObject.name == "Finish Line")
-        {
-            SceneManager.LoadScene(nextLevel);
-        }
-        if (collision.gameObject.name == "Finish Line 2")
+        if (collision.gameObject.name == "L1 Finish Line")
         {
             SceneManager.LoadScene(2);
+        }
+        if (collision.gameObject.name == "L2 Finish Line")
+        {
+            SceneManager.LoadScene(3);
         }
         if (collision.gameObject.name == "Checkpoint 1")
         {
