@@ -25,6 +25,7 @@ public class PlayerLookBehavior : MonoBehaviour
         Cursor.visible = false;
     }
 
+    // have the camera follow the players mouse
     void Update()
     {
         float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX;
