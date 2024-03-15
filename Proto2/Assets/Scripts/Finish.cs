@@ -7,6 +7,7 @@ public class Finish : MonoBehaviour
 {
     [SerializeField] GameController Gc;
 
+    //load the next scene
     private void OnTriggerEnter(Collider other)
     {
         //Gc.Win();
